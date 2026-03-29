@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 220 13% 18%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 18%;
+
+    --primary: 220 90% 56%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 16% 93%;
+    --secondary-foreground: 220 13% 18%;
+
+    --muted: 210 14% 95%;
+    --muted-foreground: 215 14% 46%;
+
+    --accent: 210 16% 93%;
+    --accent-foreground: 220 13% 18%;
+
+    --destructive: 350 80% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 9% 90%;
+    --input: 220 9% 90%;
+    --ring: 220 90% 56%;
+
+    --radius: 0.5rem;
+
+    /* Aura-specific tokens */
+    --risk-high: 350 80% 50%;
+    --risk-medium: 35 90% 45%;
+    --risk-low: 150 60% 40%;
+
+    --surface: 0 0% 100%;
+    --surface-raised: 210 20% 99%;
+    --inspector-bg: 210 20% 97.5%;
+
+    --surface-shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.04);
+    --surface-shadow-hover: 0 0 0 1px rgba(0,0,0,0.04), 0 4px 8px rgba(0,0,0,0.06);
+    --surface-shadow-lg: 0 0 0 1px rgba(0,0,0,0.03), 0 2px 4px rgba(0,0,0,0.05), 0 12px 24px -12px rgba(0,0,0,0.05);
+
+    --manuscript-font: "Source Serif 4", Georgia, serif;
+    --ui-font: "Inter", system-ui, sans-serif;
+    --mono-font: "JetBrains Mono", monospace;
+
+    --nav-width: 64px;
+    --transition-ease: cubic-bezier(0.2, 0, 0, 1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 16% 8%;
+    --foreground: 210 20% 92%;
+    --card: 220 16% 11%;
+    --card-foreground: 210 20% 92%;
+    --popover: 220 16% 11%;
+    --popover-foreground: 210 20% 92%;
+    --primary: 220 90% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 16%;
+    --secondary-foreground: 210 20% 92%;
+    --muted: 220 14% 16%;
+    --muted-foreground: 215 14% 58%;
+    --accent: 220 14% 16%;
+    --accent-foreground: 210 20% 92%;
+    --destructive: 350 80% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 14% 18%;
+    --input: 220 14% 18%;
+    --ring: 220 90% 60%;
+    --surface: 220 16% 11%;
+    --surface-raised: 220 16% 13%;
+    --inspector-bg: 220 16% 9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--ui-font);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .manuscript-text {
+    font-family: var(--manuscript-font);
+    font-size: 1.125rem;
+    line-height: 1.7;
+    max-width: 65ch;
+    text-wrap: pretty;
+  }
+
+  .ui-text {
+    font-family: var(--ui-font);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .mono-text {
+    font-family: var(--mono-font);
+  }
+
+  .surface-card {
+    background: hsl(var(--surface));
+    border-radius: 8px;
+    box-shadow: var(--surface-shadow);
+    transition: transform 0.15s var(--transition-ease), box-shadow 0.15s var(--transition-ease);
+  }
+
+  .surface-card-hover:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--surface-shadow-hover);
+  }
+
+  .risk-underline-high {
+    text-decoration: underline;
+    text-decoration-color: hsl(var(--risk-high));
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+
+  .risk-underline-medium {
+    text-decoration: underline;
+    text-decoration-color: hsl(var(--risk-medium));
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+
+  .risk-underline-low {
+    text-decoration: underline;
+    text-decoration-color: hsl(var(--risk-low));
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+
+  .risk-bg-high {
+    background-color: hsl(var(--risk-high) / 0.08);
+  }
+
+  .risk-bg-medium {
+    background-color: hsl(var(--risk-medium) / 0.08);
+  }
+
+  .risk-bg-low {
+    background-color: hsl(var(--risk-low) / 0.08);
+  }
+}
